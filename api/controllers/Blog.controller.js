@@ -45,7 +45,7 @@ export const addBlog = async(req, res, next) => {
 			message: 'Blod added successfully.'
 		})
 	} catch (error) {
-		console.log('add error');
+		console.error('Blog Add Error:', err)
 		next(handleError(500, error.message))
 	}
 }
