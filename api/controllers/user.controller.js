@@ -6,8 +6,11 @@ import bcrypt from 'bcrypt'
 export const getUser = async(req, res, next) => {
 	try {
 		const {userid} = req.params
-		// console.log(req.params);
-		
+
+		if (!mongoose.Types.ObjectId.isValid(userid)) {
+			return next(handleError(400, 'Invalid user ID.'));
+		}
+
 
 		const user = await User.findOne({_id: userid}).lean().exec()
 		if(!user){
