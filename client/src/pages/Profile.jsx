@@ -15,6 +15,7 @@ import { IoCameraOutline } from 'react-icons/io5'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import { setUser } from '@/redux/user/user.slice'
+import { getEvn } from '@/helpers/getEnv'
 
 
 const Profile = () => {
@@ -27,7 +28,7 @@ const Profile = () => {
 	
 	const userId = user?.user?._id;
 	
-	const {data: userData, loading, error} = useFetch(userId? `${import.meta.env.VITE_API_BASE_URL}/user/get-user/${userId}` : null,
+	const {data: userData, loading, error} = useFetch(userId? `${getEvn("VITE_API_BASE_URL")}/user/get-user/${userId}` : null,
 		{ method: 'GET', credentials: 'include' });
 
 	

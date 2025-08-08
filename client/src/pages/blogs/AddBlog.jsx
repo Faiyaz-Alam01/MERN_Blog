@@ -23,6 +23,7 @@ import { useNavigate } from 'react-router-dom'
 import { RouteBlog } from '@/helpers/RouteName'
 import { useSelector } from 'react-redux'
 import { decode } from 'entities'
+import { getEvn } from '@/helpers/getEnv'
 
 
 const AddblogTitle = () => {
@@ -31,7 +32,7 @@ const AddblogTitle = () => {
 
 	const user = useSelector((state) => state.user)
 
-	const {data:categoryData, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/category/all-category`,{
+	const {data:categoryData, loading, error} = useFetch(`${getEvn("VITE_API_BASE_URL")}/category/all-category`,{
 			method:"get",
 			credentials: 'include'
 	})

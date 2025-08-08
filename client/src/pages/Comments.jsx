@@ -18,6 +18,7 @@ import {FaRegTrashAlt } from 'react-icons/fa'
 import { deletedata } from '@/helpers/handleDelete.js'
 import { showToast } from '@/helpers/showToast'
 import moment from 'moment'
+import { getEvn } from '@/helpers/getEnv'
 
 
 
@@ -25,7 +26,7 @@ const Comments = () => {
 
 	const[refreshData, setRefreshData] = useState(false)
 
-	const {data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/comment/get-all-comment`,{
+	const {data, loading, error} = useFetch(`${getEvn("VITE_API_BASE_URL")}/comment/get-all-comment`,{
 		method:"get",
 		credentials: 'include'
 	},[refreshData])
@@ -33,7 +34,7 @@ const Comments = () => {
 	
 	const handleDelete =(id)=>{
 
-		const response = deletedata(`${import.meta.env.VITE_API_BASE_URL}/comment/delete/${id}`)
+		const response = deletedata(`${getEvn("VITE_API_BASE_URL")}/comment/delete/${id}`)
 
 		if(response){
 

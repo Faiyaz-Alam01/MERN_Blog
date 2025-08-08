@@ -12,6 +12,7 @@ import { showToast } from '@/helpers/showToast'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useFetch } from '@/hooks/usefetch.js'
+import { getEvn } from '@/helpers/getEnv'
 
 
 const EditCategory = () => {
@@ -19,7 +20,7 @@ const EditCategory = () => {
 
 	
 	
-	const {data:categoryData, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/category/show/${category_id}`,{
+	const {data:categoryData, loading, error} = useFetch(`${getEvn("VITE_API_BASE_URL")}/category/show/${category_id}`,{
 		method:"get",
 		credentials: 'include'
 	},[category_id])
@@ -58,7 +59,7 @@ const EditCategory = () => {
 	async function onSubmit(values) {
 		try{
 		// console.log("Sending data:", values);
-		const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/category/update/${category_id}`, values);
+		const response = await axios.put(`${getEvn("VITE_API_BASE_URL")}/category/update/${category_id}`, values);
 
 		const data = response.data;
 		

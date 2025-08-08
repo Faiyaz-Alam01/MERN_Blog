@@ -24,6 +24,7 @@ import { showToast } from '@/helpers/showToast';
 import axios from 'axios';
 import { IoMdSearch } from "react-icons/io";
 import { useSidebar } from './ui/sidebar';
+import { getEvn } from '@/helpers/getEnv';
 
 
 function Topbar() {
@@ -39,7 +40,7 @@ function Topbar() {
   
   const handleLogout = async() =>{
     try{
-      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`,{ withCredentials: true });
+      const response = await axios.get(`${getEvn("VITE_API_BASE_URL")}/auth/logout`,{ withCredentials: true });
 
       const data = response.data;
       

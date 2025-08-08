@@ -1,5 +1,6 @@
 import BlogCard from '@/components/BlogCard';
 import Loading from '@/components/Loading';
+import { getEvn } from '@/helpers/getEnv';
 import { useFetch } from '@/hooks/usefetch';
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -9,7 +10,7 @@ const SearchResult = () => {
 	const [searchParams] = useSearchParams();
 	const q = searchParams.get('q')
 
-	const {data: blogData, loading} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/blog/search?q=${q}`,{
+	const {data: blogData, loading} = useFetch(`${getEvn("VITE_API_BASE_URL")}/blog/search?q=${q}`,{
 		method:"get",
 		credentials: 'include'
 	})

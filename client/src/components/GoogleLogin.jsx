@@ -9,6 +9,7 @@ import { RouteIndex } from '@/helpers/RouteName';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/user/user.slice';
+import { getEvn } from '@/helpers/getEnv';
 
 const GoogleLogin = () => {
 

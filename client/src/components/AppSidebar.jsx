@@ -20,13 +20,13 @@ import { GoDot } from "react-icons/go";
 import {RouteBlog, RouteBlogByCategory, RouteCategoryDetails, RouteCommentsShow, RouteIndex, RouteUser } from "@/helpers/RouteName";
 import { useFetch } from "@/hooks/usefetch";
 import { useSelector } from "react-redux";
-
+import { getEvn } from "@/helpers/getEnv";
 
 
 function AppSidebar() {
     const user = useSelector(state => state.user)
   
-    const { data: categoryData } = useFetch(`${import.meta.env.VITE_API_BASE_URL}/category/all-category`, {
+    const { data: categoryData } = useFetch(`${getEvn("VITE_API_BASE_URL")}/category/all-category`, {
       method: 'get',
       credentials: 'include'
     })

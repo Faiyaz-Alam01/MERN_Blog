@@ -17,12 +17,13 @@ import { deletedata } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
 import Loading from '@/components/Loading'
 import { FaEdit, FaRegTrashAlt } from 'react-icons/fa'
+import { getEvn } from '@/helpers/getEnv'
 
 const BlogDetails = () => {
 
 	const[refreshData, setRefreshData] = useState(false)
 	
-		const {data: blogData, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/blog/get-all`,{
+		const {data: blogData, loading, error} = useFetch(`${getEvn("VITE_API_BASE_URL")}/blog/get-all`,{
 			method:"get",
 			credentials: 'include'
 		},[refreshData])

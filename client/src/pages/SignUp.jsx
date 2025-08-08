@@ -13,6 +13,7 @@ import axios from 'axios'
 import { showToast } from '@/helpers/showToast'
 import GoogleLogin from '@/components/GoogleLogin'
 import { IoMdArrowBack } from "react-icons/io";
+import { getEvn } from '@/helpers/getEnv'
 
 
 function SignUp() {
@@ -39,7 +40,7 @@ function SignUp() {
   async function onSubmit(values) {
     try{
       // console.log("Sending data:", values);
-      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, values);
+      const response = await axios.post(`${getEvn("VITE_API_BASE_URL")}/auth/register`, values);
 
       const data = response.data;
       

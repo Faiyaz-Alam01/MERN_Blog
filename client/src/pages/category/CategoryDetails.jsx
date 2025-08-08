@@ -17,12 +17,13 @@ import Loading from '@/components/Loading'
 import { FaEdit, FaRegTrashAlt } from 'react-icons/fa'
 import { deletedata } from '@/helpers/handleDelete.js'
 import { showToast } from '@/helpers/showToast'
+import { getEvn } from '@/helpers/getEnv'
 
 const CategoryDetails = () => {
 
 	const[refreshData, setRefreshData] = useState(false)
 
-	const {data:categoryData, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/category/all-category`,{
+	const {data:categoryData, loading, error} = useFetch(`${getEvn("VITE_API_BASE_URL")}/category/all-category`,{
 		method:"get",
 		credentials: 'include'
 	}, [refreshData])
@@ -30,7 +31,7 @@ const CategoryDetails = () => {
 	// console.log(categoryData);
 	
 	const handleDelete =(id)=>{
-		const response = deletedata(`${import.meta.env.VITE_API_BASE_URL}/category/delete/${id}`)
+		const response = deletedata(`${getEvn("VITE_API_BASE_URL")}/category/delete/${id}`)
 
 		if(response){
 			setRefreshData(refreshData => (!refreshData))
