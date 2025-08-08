@@ -19,7 +19,7 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.use(cors({
-	origin: "https://mern-blog-coral.vercel.app",
+	origin: ['http://localhost:5173','https://mern-blog-coral.vercel.app'],
 	credentials: true
 }))
 
