@@ -19,7 +19,7 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.use(cors({
-	origin: "https://mern-projects-blog-wjca.vercel.app",
+	origin: "https://mern-blog-ik6h.onrender.com",
 	credentials: true
 }))
 
