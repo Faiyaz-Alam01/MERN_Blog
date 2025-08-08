@@ -13,8 +13,6 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { RouteSignIn } from '@/helpers/RouteName'
 import CommentList from './CommentList'
-import { getEvn } from '@/helpers/getEnv'
-
 
 
 const Comment = ({props}) => {
@@ -40,7 +38,7 @@ const Comment = ({props}) => {
 			const newValues ={...values, blogid: props.blogid, user: user.user._id}
 			// console.log('newValues', newValues);
 			
-			const response = await axios.post(`${getEvn("VITE_API_BASE_URL")}/comment/add`, newValues);
+			const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/comment/add`, newValues);
 
 			const data = response.data;
 			

@@ -4,7 +4,6 @@ import { FaRegHeart } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { FaHeart } from "react-icons/fa";
 import { useFetch } from '@/hooks/usefetch';
-import { getEvn } from '@/helpers/getEnv';
 
 const LikeCount = ({ props }) => {
 
@@ -13,7 +12,7 @@ const LikeCount = ({ props }) => {
 
     const user = useSelector(state => state.user)
 
-    const { data: blogLikeCount, loading, error } = useFetch(`${getEvn("VITE_API_BASE_URL")}/blog-like/get-like/${props.blogid}/${user && user.isLoggedIn ? user.user._id : ''}`, {
+    const { data: blogLikeCount, loading, error } = useFetch(`${import.meta.env.VITE_API_BASE_URL}/blog-like/get-like/${props.blogid}/${user && user.isLoggedIn ? user.user._id : ''}`, {
         method: 'get',
         credentials: 'include',
     })
@@ -33,7 +32,7 @@ const LikeCount = ({ props }) => {
                 return showToast('error', 'Please login into your account.')
             }
 
-            const response = await fetch(`${getEvn("VITE_API_BASE_URL")}/blog-like/do-like`, {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/blog-like/do-like`, {
                 method: 'post',
                 credentials: 'include',
                 headers: { 'Content-type': "application/json" },

@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cookieParser())
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
 	origin: ['http://localhost:5173','https://mern-blog-coral.vercel.app'],

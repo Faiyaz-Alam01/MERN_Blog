@@ -5,14 +5,12 @@ import { useFetch } from '@/hooks/usefetch'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { BiCategory } from "react-icons/bi";
-import { getEvn } from '@/helpers/getEnv'
-
 
 const BlogByCategory = () => {
 
 	const {category} = useParams()
 
-	const {data: blogData, loading} = useFetch(`${getEvn("VITE_API_BASE_URL")}/blog/get-blog-by-category/${category}`,{
+	const {data: blogData, loading} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/blog/get-blog-by-category/${category}`,{
 		method:"get",
 		credentials: 'include'
 	},[category])

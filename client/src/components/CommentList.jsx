@@ -4,15 +4,13 @@ import { Avatar, AvatarImage } from './ui/avatar'
 import moment from 'moment'
 import { useSelector } from 'react-redux'
 import  usericon from '@/assets/images/user.png'
-import { getEvn } from '@/helpers/getEnv'
-
 
 const CommentList = ({props}) => {
 
 	const user = useSelector((state) => state.user)
 	// console.log("user", user);
 	
-	const { data, loading, error } = useFetch(`${getEvn("VITE_API_BASE_URL")}/comment/get/${props.blogid}`, {
+	const { data, loading, error } = useFetch(`${import.meta.env.VITE_API_BASE_URL}/comment/get/${props.blogid}`, {
 		method: 'get',
 		credentials: 'include',
 	})

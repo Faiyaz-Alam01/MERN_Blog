@@ -9,8 +9,6 @@ import { RouteIndex } from '@/helpers/RouteName';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/user/user.slice';
-import { getEvn } from '@/helpers/getEnv';
-
 const GoogleLogin = () => {
 
 	const dispatch = useDispatch();
@@ -27,7 +25,7 @@ const GoogleLogin = () => {
 				avatar: user.photoURL
 			}
 	
-			const response = await axios.post(`${getEvn('VITE_API_BASE_URL')}/auth/google-login`, bodyData);
+			const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/google-login`, bodyData);
 			
 
 			const data = response.data;

@@ -20,8 +20,6 @@ import { showToast } from '@/helpers/showToast'
 import moment from 'moment'
 import userIcon from "@/assets/images/user.png"
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { getEvn } from '@/helpers/getEnv'
-
 
 const Users = () => {
 
@@ -31,7 +29,7 @@ const Users = () => {
 
 	const[refreshData, setRefreshData] = useState(false)
 
-	const {data, loading, error} = useFetch(`${getEvn("VITE_API_BASE_URL")}/user/get-all-users`,{
+	const {data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}/user/get-all-users`,{
 		method:"get",
 		credentials: 'include'
 	},[refreshData])
@@ -41,7 +39,7 @@ const Users = () => {
 	
 	const handleDelete =(id)=>{
 
-		const response = deletedata(`${getEvn("VITE_API_BASE_URL")}/user/delete-user/${id}`)
+		const response = deletedata(`${import.meta.env.VITE_API_BASE_URL}/user/delete-user/${id}`)
 
 		if(response){
 			setRefreshData(refreshData => (!refreshData))

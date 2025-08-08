@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setUser } from '@/redux/user/user.slice'
 import GoogleLogin from '@/components/GoogleLogin'
-import { getEvn } from '@/helpers/getEnv'
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const SignIn = () => {
 
    async function onSubmit(values) {
     try{
-      const response = await axios.post(`${getEvn("VITE_API_BASE_URL")}/auth/login`, values);
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, values);
 
       const data = response.data;
       

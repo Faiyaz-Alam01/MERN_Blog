@@ -9,13 +9,12 @@ import moment from 'moment';
 import CommentCount from '@/components/CommentCount';
 import LikeCount from '@/components/LikeCount';
 import RelatedBlog from '@/components/RelatedBlog';
-import { getEvn } from '@/helpers/getEnv';
 
 const SingleBlogDetails = () => {
 
 	const { blog, category } = useParams()
 
-	const { data, loading } = useFetch(`${getEvn("VITE_API_BASE_URL")}/blog/get-blog/${blog}`, {
+	const { data, loading } = useFetch(`${import.meta.env.VITE_API_BASE_URL}/blog/get-blog/${blog}`, {
 		method: 'get',
 		credentials: 'include',
 	},[blog, category])

@@ -23,20 +23,18 @@ import { RouteBlog } from '@/helpers/RouteName'
 import { decode } from 'entities'
 import Loading from '@/components/Loading'
 import { useFetch } from '@/hooks/usefetch'
-import { getEvn } from '@/helpers/getEnv'
-
 
 const EditBlog = () => {
     const { blogid } = useParams()
     const navigate = useNavigate()
     const user = useSelector((state) => state.user)
 
-    const { data: categoryData } = useFetch(`${getEvn("VITE_API_BASE_URL")}/category/all-category`, {
+    const { data: categoryData } = useFetch(`${import.meta.env.VITE_API_BASE_URL}/category/all-category`, {
         method: 'get',
         credentials: 'include'
     })
 
-    const { data: blogData, loading: blogLoading } = useFetch(`${getEvn("VITE_API_BASE_URL")}/blog/edit/${blogid}`, {
+    const { data: blogData, loading: blogLoading } = useFetch(`${import.meta.env.VITE_API_BASE_URL}/blog/edit/${blogid}`, {
         method: 'get',
         credentials: 'include'
     }, [blogid])
@@ -100,7 +98,7 @@ const EditBlog = () => {
             formData.append('file', file)
             formData.append('data', JSON.stringify(values))
 
-            const response = await fetch(`${getEvn("VITE_API_BASE_URL")}/blog/update/${blogid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/blog/update/${blogid}`, {
                 method: 'put',
                 credentials: 'include',
                 body: formData
