@@ -98,7 +98,6 @@ const Profile = () => {
 
 
 	const handleFileSelection= (files)=> {
-		// console.log(files);
 		const file = files[0]
 		const preview = URL.createObjectURL(file)
 		setFile(file)
