@@ -2,16 +2,10 @@ import cloudinary from '../config/cloudinary.js';
 import { handleError } from '../helpers/handleError.js';
 import {User} from '../models/user.model.js'
 import bcrypt from 'bcrypt'
-import mongoose from 'mongoose';
 
 export const getUser = async(req, res, next) => {
 	try {
 		const {userid} = req.params
-
-		if (!mongoose.Types.ObjectId.isValid(userid)) {
-			return next(handleError(400, 'Invalid user ID.'));
-		}
-
 
 		const user = await User.findOne({_id: userid}).lean().exec()
 		if(!user){
